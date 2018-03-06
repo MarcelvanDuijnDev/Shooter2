@@ -10,8 +10,8 @@ public class WeaponNew : MonoBehaviour {
     [SerializeField]private GameObject flash;
     [SerializeField]private Animator flashAnim;
 
+    [Header("Weapons")]
     public Weapons[] weaponsClass;
-
 
     void Start () 
     {
@@ -98,6 +98,11 @@ public class WeaponNew : MonoBehaviour {
         {
             weaponsClass[gunId].currentAmmo += weaponsClass[gunId].ammo;
             weaponsClass[gunId].ammo = 0;
+        }
+        if (weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].magazineSize > weaponsClass[gunId].currentAmmo && weaponsClass[gunId].ammo >= weaponsClass[gunId].magazineSize - weaponsClass[gunId].currentAmmo)
+        {
+            weaponsClass[gunId].ammo -= weaponsClass[gunId].magazineSize - weaponsClass[gunId].currentAmmo;
+            weaponsClass[gunId].currentAmmo = weaponsClass[gunId].magazineSize;
         }
     }
 
