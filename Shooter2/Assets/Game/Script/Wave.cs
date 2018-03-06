@@ -6,18 +6,29 @@ public class Wave : MonoBehaviour {
 
     public float timeStart;
     public GameObject[] spawnLocation;
-    public float[] timeNewWave;
 
     [Header("Waves")]
     public Waves[] waveClass;
 
     private int currentWave,totalWaves;
     private bool startWaves;
-    private float spawnDuration;
+    public float[] spawnDuration;
+    public int[] totalEnemys;
+    
 
     void Start ()
     {
         totalWaves = waveClass.Length;
+        spawnDuration = new float[waveClass.Length];
+        totalEnemys = new int[waveClass.Length];
+        for (int i = 0; i < waveClass.Length; i++)
+        {
+            for (int o = 0; o < waveClass[i].spawnEnemys.Length; o++)
+            {
+                totalEnemys[i] += waveClass[i].spawnEnemys[o];
+            }
+            spawnDuration[i] = waveClass[i].waveSpawnDuration / totalEnemys[i];
+        }
 	}
 	
 	void Update ()
@@ -29,7 +40,7 @@ public class Wave : MonoBehaviour {
         }
         if(startWaves)
         {
-            waveClass[currentWave].waveSpawnDuration -= 1 * Time.deltaTime;
+            //waveClass[currentWave].waveSpawnDuration -= 1 * Time.deltaTime;
             
         }
     }
