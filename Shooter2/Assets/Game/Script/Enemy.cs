@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "PlayerBullet")
         {
             health -= 25;
+            other.gameObject.SetActive(false);
         }
     }
 

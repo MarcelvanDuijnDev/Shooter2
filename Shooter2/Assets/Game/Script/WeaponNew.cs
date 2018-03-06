@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class WeaponNew : MonoBehaviour {
+public class WeaponNew : MonoBehaviour 
+{
 
     [SerializeField]private int gunId;
     [SerializeField]private Text[] textUI;
@@ -21,19 +22,45 @@ public class WeaponNew : MonoBehaviour {
             weaponsClass[gunId].objectPoolScript = (ObjectPool_Script)weaponsClass[gunId].objectPool.GetComponent(typeof(ObjectPool_Script));
             weaponsClass[gunId].anim = weaponsClass[gunId].weapon.GetComponent<Animator>();
             weaponsClass[gunId].reloadTimeReset = weaponsClass[gunId].reloadTime;
+            weaponsClass[gunId].shootSpeedReset = weaponsClass[gunId].shootSpeed;
         }
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0)
+        //Single Shot
+        if (Input.GetMouseButtonDown(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 0)
         {
             Fire(gunId);
             weaponsClass[gunId].anim.SetTrigger("M4");
             flashAnim.SetTrigger("Flash");
             flash.transform.localPosition = weaponsClass[gunId].shootPoint.transform.localPosition + weaponsClass[gunId].weapon.transform.localPosition;
             weaponsClass[gunId].currentAmmo -= 1;
+            if (weaponsClass[gunId].reloading)
+            {
+                weaponsClass[gunId].reloading = false;
+                weaponsClass[gunId].reloadTime = weaponsClass[gunId].reloadTimeReset;
+            }
         }
+        if (Input.GetMouseButton(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 2)
+        {
+            weaponsClass[gunId].shootSpeed -= 1 * Time.deltaTime;
+            if (weaponsClass[gunId].shootSpeed <= 0)
+            {
+                Fire(gunId);
+                weaponsClass[gunId].anim.SetTrigger("M4");
+                flashAnim.SetTrigger("Flash");
+                flash.transform.localPosition = weaponsClass[gunId].shootPoint.transform.localPosition + weaponsClass[gunId].weapon.transform.localPosition;
+                weaponsClass[gunId].currentAmmo -= 1;
+                if (weaponsClass[gunId].reloading)
+                {
+                    weaponsClass[gunId].reloading = false;
+                    weaponsClass[gunId].reloadTime = weaponsClass[gunId].reloadTimeReset;
+                }
+                weaponsClass[gunId].shootSpeed = weaponsClass[gunId].shootSpeedReset;
+            }
+        }
+
         if (Input.GetMouseButton(1) && gunId <= weaponsClass.Length)
         {
             weaponsClass[gunId].weapon.transform.localPosition = new Vector3(weaponsClass[gunId].aimPos.x, weaponsClass[gunId].aimPos.y, weaponsClass[gunId].aimPos.z);
@@ -66,6 +93,31 @@ public class WeaponNew : MonoBehaviour {
             {
                 Reload();
                 weaponsClass[gunId].reloading = false;
+            }
+        }
+
+        //Set weapon type
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            if(weaponsClass[gunId].shootType == 0 && weaponsClass[gunId].burst)
+            {
+                weaponsClass[gunId].shootType = 1;
+            }
+            else if(weaponsClass[gunId].shootType == 0 && !weaponsClass[gunId].burst && weaponsClass[gunId].automatic)
+            {
+                weaponsClass[gunId].shootType = 2;
+            }
+            else if(weaponsClass[gunId].shootType == 1 && !weaponsClass[gunId].automatic)
+            {
+                weaponsClass[gunId].shootType = 0;
+            }
+            else if(weaponsClass[gunId].shootType == 1 && weaponsClass[gunId].automatic)
+            {
+                weaponsClass[gunId].shootType = 2;
+            }
+            else if(weaponsClass[gunId].shootType == 2)
+            {
+                weaponsClass[gunId].shootType = 0;
             }
         }
     }
@@ -133,13 +185,24 @@ public class Weapons
 {
     public GameObject weapon, objectPool;
     public Transform shootPoint;
-    public float bulletSpeed, reloadTime;
+    public float bulletSpeed, reloadTime, shootSpeed;
     public Vector3 normalPos, aimPos;
     public int ammo, magazineSize;
+    public bool automatic, burst;
 
     [HideInInspector]public Animator anim;
     [HideInInspector]public ObjectPool_Script objectPoolScript;
-    [HideInInspector]public float reloadTimeReset;
+    [HideInInspector]public float reloadTimeReset,shootSpeedReset;
     [HideInInspector]public int currentAmmo;
     [HideInInspector]public bool reloading;
+    public int shootType;
 }
+/*
+
+
+1 single shot
+2 Burst
+3 Automatic
+
+
+*/

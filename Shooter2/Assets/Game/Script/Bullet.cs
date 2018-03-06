@@ -22,6 +22,9 @@ public class Bullet : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        this.gameObject.SetActive(false);
+        if(other.gameObject.tag == "Untagged")
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }
