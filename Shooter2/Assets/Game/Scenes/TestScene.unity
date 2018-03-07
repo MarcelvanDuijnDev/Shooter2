@@ -392,12 +392,9 @@ MonoBehaviour:
   timeStart: 0
   spawnLocation: []
   waveClass:
-  - waveSpawnDuration: 10
+  - waveSpawnDuration: 0
     enemys: []
-    spawnEnemys: 0c0000000a0000000a0000001400000014000000
-  - waveSpawnDuration: 10
-    enemys: []
-    spawnEnemys: 0c0000000a0000000a000000
+    spawnEnemys: 
   spawnDuration: []
   totalEnemys: 
 --- !u!4 &557870679
@@ -1212,19 +1209,21 @@ MonoBehaviour:
     bulletSpeed: 50
     reloadTime: 1.5
     shootSpeed: 0.1
+    burstShootSpeed: 0
     normalPos: {x: 0.286, y: -0.277, z: 0.82}
     aimPos: {x: -0.068, y: -0.277, z: 0.72}
     ammo: 3000
     magazineSize: 30
+    burstAmount: 0
     automatic: 1
     burst: 1
+    shootType: 0
     anim: {fileID: 0}
     objectPoolScript: {fileID: 0}
     reloadTimeReset: 0
     shootSpeedReset: 0
     currentAmmo: 0
     reloading: 0
-    shootType: 0
 --- !u!1 &1413868949
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,6 +42,7 @@ public class WeaponNew : MonoBehaviour
                 weaponsClass[gunId].reloadTime = weaponsClass[gunId].reloadTimeReset;
             }
         }
+
         if (Input.GetMouseButton(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 2)
         {
             weaponsClass[gunId].shootSpeed -= 1 * Time.deltaTime;
@@ -185,17 +186,17 @@ public class Weapons
 {
     public GameObject weapon, objectPool;
     public Transform shootPoint;
-    public float bulletSpeed, reloadTime, shootSpeed;
+    public float bulletSpeed, reloadTime, shootSpeed, burstShootSpeed;
     public Vector3 normalPos, aimPos;
-    public int ammo, magazineSize;
+    public int ammo, magazineSize, burstAmount;
     public bool automatic, burst;
+    public int shootType;
 
     [HideInInspector]public Animator anim;
     [HideInInspector]public ObjectPool_Script objectPoolScript;
     [HideInInspector]public float reloadTimeReset,shootSpeedReset;
     [HideInInspector]public int currentAmmo;
     [HideInInspector]public bool reloading;
-    public int shootType;
 }
 /*
 
