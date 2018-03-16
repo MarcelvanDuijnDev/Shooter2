@@ -187,7 +187,6 @@ public class WeaponNew : MonoBehaviour
                 weaponsClass[gunId].currentAmmo -= 1;
                 burstAmountCalculate++;
                 weaponsClass[gunId].shootSpeed = weaponsClass[gunId].shootSpeedReset;
-
             }
         }
     }

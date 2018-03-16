@@ -1366,9 +1366,9 @@ MonoBehaviour:
     aimPos: {x: -0.068, y: -0.277, z: 0.72}
     ammo: 3000
     magazineSize: 60
-    burstAmount: 0
+    burstAmount: 3
     automatic: 1
-    burst: 1
+    burst: 0
     shootType: 0
     anim: {fileID: 0}
     objectPoolScript: {fileID: 0}
@@ -1425,6 +1425,11 @@ Prefab:
       propertyPath: goal
       value: 
       objectReference: {fileID: 1216917230}
+    - target: {fileID: 114549278982935884, guid: 6e97b8fe728099041919216a6a5d1036,
+        type: 2}
+      propertyPath: health
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e97b8fe728099041919216a6a5d1036, type: 2}
   m_IsPrefabParent: 0
