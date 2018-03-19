@@ -7,7 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour 
 {
     [SerializeField]private Text healthText;
-    [SerializeField]private Transform goal;
+    [SerializeField]private GameObject goal;
     [SerializeField]private float health,speed;
     NavMeshAgent agent;
 
@@ -15,28 +15,34 @@ public class Enemy : MonoBehaviour
 
 	void Start () 
     {
-       maxHealth = health;
-       agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
+        goal = GameObject.Find("Player");
 	}
 
     private void OnDisable()
     {
-        healthText.gameObject.SetActive(false);
+        health = maxHealth;
+        //healthText.gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        maxHealth = health;
     }
 
     void FixedUpdate () 
     {
         agent.speed = speed;
-        agent.destination = goal.position; 
+        agent.destination = goal.transform.position; 
 
         if(health <= 0)
         {
             this.gameObject.SetActive(false);
         }
 
-        healthText.transform.position = transform.position;
-        healthText.transform.rotation = transform.rotation;
-        healthText.text = health.ToString("F0") + "/" + maxHealth.ToString("F0");
+        //healthText.transform.position = transform.position;
+        //healthText.transform.rotation = transform.rotation;
+        //healthText.text = health.ToString("F0") + "/" + maxHealth.ToString("F0");
 	}
 
     public void OnTriggerEnter(Collider other)

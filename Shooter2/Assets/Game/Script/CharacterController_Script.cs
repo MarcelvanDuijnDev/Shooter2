@@ -5,15 +5,16 @@ using UnityEngine;
 public class CharacterController_Script : MonoBehaviour {
 
     //Movement
-    [SerializeField]private float speed = 6.0F;
-    [SerializeField]private float jumpSpeed = 8.0F;
-    [SerializeField]private float gravity = 20.0F;
+    [SerializeField]private float normalSpeed, sprintSpeed;
+    [SerializeField]private float jumpSpeed;
+    [SerializeField]private float gravity;
     private Vector3 moveDirection = Vector3.zero;
     //Look around
-    [SerializeField]private float cameraSensitivity = 90;
+    [SerializeField]private float cameraSensitivity;
+    [SerializeField]private Transform head;
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
-    [SerializeField]private Transform head;
+    private float speed;
 
     void Start()
     {
@@ -42,5 +43,15 @@ public class CharacterController_Script : MonoBehaviour {
         }
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        //Sprint
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = sprintSpeed;
+        }
+        else
+        {
+            speed = normalSpeed;
+        }
     }
 }
