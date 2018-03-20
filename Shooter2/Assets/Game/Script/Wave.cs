@@ -55,7 +55,16 @@ public class Wave : MonoBehaviour {
             spawnDuration[currentWave] -= 1 * Time.deltaTime;
             if(spawnDuration[currentWave] <= 0)
             {
-                SpawnEnemy(0);
+                int enemyid = Random.Range(0,waveClass[currentWave].enemys.Length);
+
+                for (int i = 0; i < waveClass[currentWave].enemys.Length; i++)
+                {
+                    if(waveClass[currentWave].spawnEnemys[i] > 0 && i == enemyid)
+                    {
+                        SpawnEnemy(enemyid);
+                        waveClass[currentWave].spawnEnemys[i] -= 1;
+                    }
+                }
                 spawnDuration[currentWave] = spawnDurationReset[currentWave];
             }
         }

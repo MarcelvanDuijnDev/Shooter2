@@ -14,6 +14,8 @@ public class WeaponNew : MonoBehaviour
     [Header("Weapons")]
     public Weapons[] weaponsClass;
 
+    [HideInInspector]public int kills;
+
     void Start () 
     {
         flashAnim = flash.GetComponent<Animator>();
@@ -215,6 +217,7 @@ public class WeaponNew : MonoBehaviour
         if (weaponsClass[gunId].shootType == 1) { shootTypetText = "Burst"; }
         if (weaponsClass[gunId].shootType == 2) { shootTypetText = "Auto"; }
         textUI[2].text = shootTypetText;
+        textUI[3].text = "Kills: " + kills;
     }
 }
 
