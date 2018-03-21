@@ -11,7 +11,7 @@ public class Wave : MonoBehaviour {
     public Waves[] waveClass;
 
     private int currentWave,totalWaves;
-    private bool startWaves;
+    private bool startWaves = true;
     private float[] spawnDuration;
     private int[] totalEnemys;
     private float[] spawnDurationReset;
@@ -45,12 +45,7 @@ public class Wave : MonoBehaviour {
 	
 	void Update ()
     {
-        timeStart -= 1 * Time.deltaTime;
-        if(timeStart <= 0)
-        {
-            startWaves = true;
-        }
-        if(startWaves)
+        if(startWaves && currentWave <= waveClass.Length)
         {
             spawnDuration[currentWave] -= 1 * Time.deltaTime;
             if(spawnDuration[currentWave] <= 0)
@@ -62,12 +57,27 @@ public class Wave : MonoBehaviour {
                     if(waveClass[currentWave].spawnEnemys[i] > 0 && i == enemyid)
                     {
                         SpawnEnemy(enemyid);
+                        totalEnemys[currentWave] -= 1;
                         waveClass[currentWave].spawnEnemys[i] -= 1;
+                        if(totalEnemys[currentWave] <= 0)
+                        {
+                            startWaves = false;
+                        }
                     }
                 }
                 spawnDuration[currentWave] = spawnDurationReset[currentWave];
             }
         }
+        if (!startWaves)
+        {
+            waveClass[currentWave].timeNextWave -= 1 * Time.deltaTime;
+            if(waveClass[currentWave].timeNextWave <= 0 && currentWave <= waveClass.Length)
+            {
+                currentWave += 1;
+                startWaves = true;
+            }
+        }
+        
     }
 
     void SpawnEnemy(int enemyId)
@@ -76,9 +86,18 @@ public class Wave : MonoBehaviour {
         {
             if (!waveClass[currentWave].objectPoolScript[enemyId].objects[i].activeInHierarchy)
             {
-                int spawnLoc = Random.Range(0, spawnLocation.Length);
-                waveClass[currentWave].objectPoolScript[enemyId].objects[i].transform.position = spawnLocation[spawnLoc].transform.position;
-                waveClass[currentWave].objectPoolScript[enemyId].objects[i].transform.rotation = spawnLocation[spawnLoc].transform.rotation;
+                if (waveClass[currentWave].customSpawn.Length != 0)
+                {
+                    int spawnLoc = Random.Range(0, waveClass[currentWave].customSpawn.Length);
+                    waveClass[currentWave].objectPoolScript[enemyId].objects[i].transform.position = waveClass[currentWave].customSpawn[spawnLoc].transform.position;
+                    waveClass[currentWave].objectPoolScript[enemyId].objects[i].transform.rotation = waveClass[currentWave].customSpawn[spawnLoc].transform.rotation;
+                }
+                else
+                {
+                    int spawnLoc = Random.Range(0, spawnLocation.Length);
+                    waveClass[currentWave].objectPoolScript[enemyId].objects[i].transform.position = spawnLocation[spawnLoc].transform.position;
+                    waveClass[currentWave].objectPoolScript[enemyId].objects[i].transform.rotation = spawnLocation[spawnLoc].transform.rotation;
+                }
                 waveClass[currentWave].objectPoolScript[enemyId].objects[i].SetActive(true);
                 break;
             }
@@ -89,9 +108,12 @@ public class Wave : MonoBehaviour {
 [System.Serializable]
 public class Waves
 {
+    [Header("========================")]
     public float waveSpawnDuration;
+    public float timeNextWave;
     public GameObject[] enemys;
     public int[] spawnEnemys;
+    public GameObject[] customSpawn;
 
     [HideInInspector]
     public ObjectPool_Script[] objectPoolScript;
