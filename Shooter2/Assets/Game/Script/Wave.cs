@@ -5,6 +5,7 @@ using UnityEngine;
 public class Wave : MonoBehaviour {
 
     public float timeStart;
+
     public GameObject[] spawnLocation;
 
     [Header("Waves")]
@@ -21,9 +22,9 @@ public class Wave : MonoBehaviour {
     {
         for (int i = 0; i < waveClass.Length; i++)
         {
+            waveClass[i].objectPoolScript = new ObjectPool_Script[waveClass[i].enemys.Length];
             for (int o = 0; o < waveClass[i].enemys.Length; o++)
             {
-                waveClass[i].objectPoolScript = new ObjectPool_Script[waveClass[i].enemys.Length];
                 waveClass[i].objectPoolScript[o] = (ObjectPool_Script)waveClass[i].enemys[o].GetComponent(typeof(ObjectPool_Script));
             }
         }
@@ -51,7 +52,6 @@ public class Wave : MonoBehaviour {
             if(spawnDuration[currentWave] <= 0)
             {
                 int enemyid = Random.Range(0,waveClass[currentWave].enemys.Length);
-
                 for (int i = 0; i < waveClass[currentWave].enemys.Length; i++)
                 {
                     if(waveClass[currentWave].spawnEnemys[i] > 0 && i == enemyid)
@@ -77,11 +77,11 @@ public class Wave : MonoBehaviour {
                 startWaves = true;
             }
         }
-        
     }
 
     void SpawnEnemy(int enemyId)
     {
+        Debug.Log(enemyId);
         for (int i = 0; i < waveClass[currentWave].objectPoolScript[enemyId].objects.Count; i++)
         {
             if (!waveClass[currentWave].objectPoolScript[enemyId].objects[i].activeInHierarchy)
@@ -106,7 +106,7 @@ public class Wave : MonoBehaviour {
 }
 
 [System.Serializable]
-public class Waves
+public struct Waves
 {
     [Header("========================")]
     public float waveSpawnDuration;
@@ -114,9 +114,6 @@ public class Waves
     public GameObject[] enemys;
     public int[] spawnEnemys;
     public GameObject[] customSpawn;
-
     [HideInInspector]
     public ObjectPool_Script[] objectPoolScript;
-
-
 }
