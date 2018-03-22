@@ -471,12 +471,12 @@ MonoBehaviour:
   timeStart: 0
   spawnLocation: []
   waveClass:
-  - waveSpawnDuration: 1
+  - waveSpawnDuration: 10
     timeNextWave: 20
     enemys:
     - {fileID: 280590683}
     - {fileID: 770393836}
-    spawnEnemys: 00000000e8030000
+    spawnEnemys: 0a0000000a000000
     customSpawn:
     - {fileID: 833260033}
     objectPoolScript: []
