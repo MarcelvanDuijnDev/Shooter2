@@ -1,0 +1,15 @@
+Chapter_1_Level_1:					
+Siting behind table > 				
+Get message on laptop > "Succesfull space launch of new rocket" 						
+							
+Detail:						
+Laptop background = company logo/space stuff	
+Wall = Logo Company		
+Bureau = Money count, Lamp, Laptop	
+
+Chapter_1_Level_2:
+Text "2 years later" > 
+Spaceship launch to new earth like planet
+
+Chapter_1_Level_3
+Spaceship crashes on planet
