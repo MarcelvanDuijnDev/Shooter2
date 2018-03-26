@@ -1466,7 +1466,6 @@ GameObject:
   - component: {fileID: 557870679}
   - component: {fileID: 557870678}
   - component: {fileID: 557870680}
-  - component: {fileID: 557870681}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -1529,26 +1528,6 @@ MonoBehaviour:
   currentYear: 0
   currentDay: 0
   weatherState: 1
---- !u!114 &557870681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 557870677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79557c65ed933ea44b47bfe08ea5cac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: marcel
-  inputHash: 24dde05168c24253ce9fec0fddd1e48d
-  hash: 
-  decryptHash: 
-  boolInput: 1
-  boolInputHash: 1
-  boolHash: 0
-  boolDecryptHash: 0
-  hashCount: 0
 --- !u!1 &603756514
 GameObject:
   m_ObjectHideFlags: 0

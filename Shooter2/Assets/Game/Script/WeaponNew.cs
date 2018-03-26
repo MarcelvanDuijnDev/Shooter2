@@ -52,6 +52,7 @@ public class WeaponNew : MonoBehaviour
             {
                 weaponsClass[gunId].reloading = false;
                 weaponsClass[gunId].reloadTime = weaponsClass[gunId].reloadTimeReset;
+
             }
         }
 
@@ -177,7 +178,7 @@ public class WeaponNew : MonoBehaviour
     {
         int burstAmountCalculate = weaponsClass[gunId].burstAmount;
         weaponsClass[gunId].shootSpeed -= 1 * Time.deltaTime;
-        if (burstAmountCalculate <= weaponsClass[gunId].burstAmount)
+        if (burstAmountCalculate <= weaponsClass[gunId].burstAmount)aa
         {
             Debug.Log("o");
             if (weaponsClass[gunId].shootSpeed <= 0 && weaponsClass[gunId].currentAmmo >= 0)
