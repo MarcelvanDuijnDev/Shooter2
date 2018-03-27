@@ -178,7 +178,7 @@ public class WeaponNew : MonoBehaviour
     {
         int burstAmountCalculate = weaponsClass[gunId].burstAmount;
         weaponsClass[gunId].shootSpeed -= 1 * Time.deltaTime;
-        if (burstAmountCalculate <= weaponsClass[gunId].burstAmount)aa
+        if (burstAmountCalculate <= weaponsClass[gunId].burstAmount)
         {
             Debug.Log("o");
             if (weaponsClass[gunId].shootSpeed <= 0 && weaponsClass[gunId].currentAmmo >= 0)

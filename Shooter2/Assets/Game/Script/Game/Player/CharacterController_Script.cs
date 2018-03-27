@@ -10,7 +10,7 @@ public class CharacterController_Script : MonoBehaviour {
     [SerializeField]private float gravity;
     private Vector3 moveDirection = Vector3.zero;
     //Look around
-    [SerializeField]private float cameraSensitivity;
+    public float cameraSensitivity;
     [SerializeField]private Transform head;
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
@@ -39,7 +39,6 @@ public class CharacterController_Script : MonoBehaviour {
             moveDirection *= speed;
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
-
         }
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
