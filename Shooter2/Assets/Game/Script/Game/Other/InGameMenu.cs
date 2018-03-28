@@ -9,6 +9,7 @@ public class InGameMenu : MonoBehaviour
 
 	void Update ()
     {
+        Debug.Log(menu.activeSelf);
 		if(Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf)
         {
             menu.SetActive(true);

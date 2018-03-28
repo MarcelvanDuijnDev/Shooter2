@@ -40,8 +40,6 @@ GameObject:
   - component: {fileID: 23806968861349790}
   - component: {fileID: 114807855272119644}
   - component: {fileID: 114045944206810092}
-  - component: {fileID: 114685960850591616}
-  - component: {fileID: 114727914966755712}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -458,8 +456,8 @@ MonoBehaviour:
     normalPos: {x: 0.286, y: -0.277, z: 0.82}
     aimPos: {x: -0.068, y: -0.277, z: 0.72}
     ammo: 3000
-    magazineSize: 30
-    burstAmount: 5
+    magazineSize: 60
+    burstAmount: 3
     automatic: 1
     burst: 0
     shootType: 0
@@ -470,39 +468,6 @@ MonoBehaviour:
     currentAmmo: 0
     reloading: 0
   kills: 0
---- !u!114 &114685960850591616
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1321805184153312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a76d7a0016a0954a968b7835aadcfe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  healthRegen: 0.1
-  armor: 0
-  maxHealth: 100
-  maxArmor: 100
-  pickupsClass:
-  - pickupObj: {fileID: 0}
-    getAmount: 20
-    health: 1
-    armor: 1
---- !u!114 &114727914966755712
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1321805184153312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947a10e9866106b4f8f38cbf72f2b3ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 0}
 --- !u!114 &114807855272119644
 MonoBehaviour:
   m_ObjectHideFlags: 1
