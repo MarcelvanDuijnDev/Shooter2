@@ -574,8 +574,8 @@ MonoBehaviour:
   - {fileID: 280590683}
   - {fileID: 770393836}
   waveAmount: 100
-  waveDuration: 10
-  timeNextWave: 20
+  waveDuration: 1
+  timeNextWave: 1
 --- !u!1 &603756514
 GameObject:
   m_ObjectHideFlags: 0
