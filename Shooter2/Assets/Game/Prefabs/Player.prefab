@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 23806968861349790}
   - component: {fileID: 114807855272119644}
   - component: {fileID: 114045944206810092}
+  - component: {fileID: 114497029052080412}
+  - component: {fileID: 114584978316258690}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -468,6 +470,40 @@ MonoBehaviour:
     currentAmmo: 0
     reloading: 0
   kills: 0
+--- !u!114 &114497029052080412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321805184153312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa4a1d03938bf24492fe3d3ebd870cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  armor: 0
+  maxHealth: 100
+  maxArmor: 100
+  healthRegen: 1
+  pickupsScript:
+  - pickupObject: {fileID: 0}
+    getAmount: 1000
+    health: 1
+    armor: 1
+    ammo: 1
+--- !u!114 &114584978316258690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321805184153312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947a10e9866106b4f8f38cbf72f2b3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 0}
 --- !u!114 &114807855272119644
 MonoBehaviour:
   m_ObjectHideFlags: 1

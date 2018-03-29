@@ -9,7 +9,6 @@ public class OnCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision");
         for (int i = 0; i < optionsOnCollisionClass.Length; i++)
         {
             if (other.gameObject == optionsOnCollisionClass[i].collisionObject)
