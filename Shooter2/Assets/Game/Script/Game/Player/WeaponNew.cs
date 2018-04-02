@@ -116,25 +116,15 @@ public class WeaponNew : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X))
         {
             if(weaponsClass[gunId].shootType == 0 && weaponsClass[gunId].burst)
-            {
-                weaponsClass[gunId].shootType = 1;
-            }
+            {weaponsClass[gunId].shootType = 1;}
             else if(weaponsClass[gunId].shootType == 0 && !weaponsClass[gunId].burst && weaponsClass[gunId].automatic)
-            {
-                weaponsClass[gunId].shootType = 2;
-            }
+            {weaponsClass[gunId].shootType = 2;}
             else if(weaponsClass[gunId].shootType == 1 && !weaponsClass[gunId].automatic)
-            {
-                weaponsClass[gunId].shootType = 0;
-            }
+            {weaponsClass[gunId].shootType = 0;}
             else if(weaponsClass[gunId].shootType == 1 && weaponsClass[gunId].automatic)
-            {
-                weaponsClass[gunId].shootType = 2;
-            }
+            {weaponsClass[gunId].shootType = 2;}
             else if(weaponsClass[gunId].shootType == 2)
-            {
-                weaponsClass[gunId].shootType = 0;
-            }
+            { weaponsClass[gunId].shootType = 0;}
         }
     }
 
@@ -220,10 +210,18 @@ public class WeaponNew : MonoBehaviour
         textUI[2].text = shootTypetText;
         textUI[3].text = "Kills: " + kills;
     }
+
+    public void GetAmmo(int amount)
+    {
+        for (int i = 0; i < weaponsClass.Length; i++)
+        {
+            weaponsClass[i].ammo += amount;
+        }
+    }
 }
 
 [System.Serializable]
-public class Weapons
+public struct Weapons
 {
     public GameObject weapon, objectPool;
     public Transform shootPoint;
@@ -239,12 +237,3 @@ public class Weapons
     [HideInInspector]public int currentAmmo;
     [HideInInspector]public bool reloading;
 }
-/*
-
-
-1 single shot
-2 Burst
-3 Automatic
-
-
-*/
