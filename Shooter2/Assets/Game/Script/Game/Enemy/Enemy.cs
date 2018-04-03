@@ -7,7 +7,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour 
 {
     private WeaponNew playerScript;
-    [SerializeField]private Text healthText;
     [SerializeField]private GameObject goal;
     [SerializeField]private float health,speed;
     NavMeshAgent agent;
@@ -24,7 +23,6 @@ public class Enemy : MonoBehaviour
     private void OnDisable()
     {
         health = maxHealth;
-        //healthText.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -42,10 +40,6 @@ public class Enemy : MonoBehaviour
             playerScript.kills += 1;
             this.gameObject.SetActive(false);
         }
-
-        //healthText.transform.position = transform.position;
-        //healthText.transform.rotation = transform.rotation;
-        //healthText.text = health.ToString("F0") + "/" + maxHealth.ToString("F0");
 	}
 
     public void OnTriggerEnter(Collider other)

@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     WeaponNew weaponsScript;
     [SerializeField]private float health,armor,maxHealth,maxArmor,healthRegen;
+    [Header("Pickups Tag")]
+    [SerializeField]private PickupsTag[] pickupsTagScript;
     [Header("Pickups")]
     [SerializeField]private Pickups[] pickupsScript;
 
@@ -17,8 +19,7 @@ public class Player : MonoBehaviour
 	void Update () 
     {
         if (health >= maxHealth)
-        { health = maxHealth;}
-        else
+        { health = maxHealth;}else
         { health += healthRegen * Time.deltaTime; }
         if (armor >= maxArmor)
         { armor = maxArmor;}
@@ -50,6 +51,27 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        for (int i = 0; i < pickupsTagScript.Length; i++)
+        {
+            if (other.gameObject.tag == pickupsTagScript[i].tag)
+            {
+                if (health <= maxHealth && pickupsTagScript[i].health)
+                {
+                    health += pickupsTagScript[i].getAmount;
+                    other.gameObject.SetActive(false);
+                }
+                if (armor <= maxArmor && pickupsTagScript[i].armor)
+                {
+                    armor += pickupsTagScript[i].getAmount;
+                    other.gameObject.SetActive(false);
+                }
+                if (pickupsTagScript[i].ammo)
+                {
+                    weaponsScript.GetAmmo(pickupsTagScript[i].getAmount);
+                    other.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }
 
@@ -59,4 +81,12 @@ public struct Pickups
     public GameObject pickupObject;
     public int getAmount;
     public bool health,armor,ammo;
+}
+
+[System.Serializable]
+public struct PickupsTag
+{
+    public string tag;
+    public int getAmount;
+    public bool health, armor, ammo;
 }
