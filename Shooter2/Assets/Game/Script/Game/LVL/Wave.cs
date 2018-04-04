@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
-    public float timeStart;
+    private WeaponNew playerScript;
+    [SerializeField]
+    private Text enemysAliveText;
 
+    public float timeStart;
     public GameObject[] spawnLocation;
 
     [Header("Waves")]
@@ -20,10 +24,14 @@ public class Wave : MonoBehaviour
     public float startTimer;
     private bool start;
 
+    private int killsNeeded;
+
 
 
     void Start()
     {
+        playerScript = GameObject.Find("Player").GetComponent<WeaponNew>();
+
         if (!start)
         {
             GetInfo();
@@ -32,12 +40,15 @@ public class Wave : MonoBehaviour
 	
 	void Update ()
     {
+        int aliveEnemys = killsNeeded - playerScript.kills;
+        enemysAliveText.text = aliveEnemys.ToString();
         if (startTimer >= 0)
         {
             startTimer -= 1 * Time.deltaTime;
         }
-        else
+        if (startTimer <= 0 && !start)
         {
+            killsNeeded = totalEnemys[0];
             start = true;
         }
         if (start)
@@ -64,13 +75,26 @@ public class Wave : MonoBehaviour
                     spawnDuration[currentWave] = spawnDurationReset[currentWave];
                 }
             }
-            if (!startWaves)
+            if (!startWaves && !waveClass[currentWave].killAll)
             {
                 waveClass[currentWave].timeNextWave -= 1 * Time.deltaTime;
                 if (waveClass[currentWave].timeNextWave <= 0 && currentWave <= waveClass.Length)
                 {
                     currentWave += 1;
                     startWaves = true;
+                }
+            }
+            if (!startWaves && waveClass[currentWave].killAll)
+            {
+                if (killsNeeded == playerScript.kills)
+                {
+                    waveClass[currentWave].timeNextWave -= 1 * Time.deltaTime;
+                    if (waveClass[currentWave].timeNextWave <= 0 && currentWave <= waveClass.Length)
+                    {
+                        currentWave += 1;
+                        killsNeeded += totalEnemys[currentWave];
+                        startWaves = true;
+                    }
                 }
             }
         }
@@ -82,7 +106,6 @@ public class Wave : MonoBehaviour
         {
             if (!waveClass[currentWave].objectPoolScript[enemyId].objects[i].activeInHierarchy)
             {
-                Debug.Log(enemyId);
                 if (waveClass[currentWave].customSpawn.Length != 0)
                 {
                     int spawnLoc = Random.Range(0, waveClass[currentWave].customSpawn.Length);
@@ -132,6 +155,7 @@ public class Wave : MonoBehaviour
 public struct Waves
 {
     [Header("========================")]
+    public bool killAll;
     public float waveSpawnDuration;
     public float timeNextWave;
     public GameObject[] enemys;

@@ -12,6 +12,7 @@ public class GenerateWave : MonoBehaviour
     [Header("Wave Settings")]
     [SerializeField]private float waveDuration;
     [SerializeField]private float timeNextWave;
+    [SerializeField]private bool killAll;
 
     private float timer;
     private bool check;
@@ -35,6 +36,7 @@ public class GenerateWave : MonoBehaviour
             }
             waveScript.waveClass[i].waveSpawnDuration = waveDuration;
             waveScript.waveClass[i].timeNextWave = timeNextWave;
+            waveScript.waveClass[i].killAll = killAll;
         }
     }
 	

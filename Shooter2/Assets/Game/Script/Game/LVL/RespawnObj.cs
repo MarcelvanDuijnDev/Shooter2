@@ -5,6 +5,7 @@ using UnityEngine;
 public class RespawnObj : MonoBehaviour
 {
 
+
     [Header("Waves")]
     public Respawn[] respawnClass;
     private float[] timers;
