@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour 
 {
-    private WeaponNew playerScript;
+    private WeaponNew playerWeaponScript;
+    private Player playerScript;
     [SerializeField]private GameObject goal;
     [SerializeField]private float health,speed;
     NavMeshAgent agent;
@@ -17,7 +18,7 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         goal = GameObject.Find("Player");
-        playerScript = (WeaponNew)goal.GetComponent(typeof(WeaponNew));
+        playerWeaponScript = (WeaponNew)goal.GetComponent(typeof(WeaponNew));
     }
 
     private void OnDisable()
@@ -37,7 +38,7 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
-            playerScript.kills += 1;
+            playerWeaponScript.kills += 1;
             this.gameObject.SetActive(false);
         }
 	}
@@ -48,6 +49,10 @@ public class Enemy : MonoBehaviour
         {
             health -= 25;
             other.gameObject.SetActive(false);
+        }
+        if(other.tag == "Player")
+        {
+           
         }
     }
 

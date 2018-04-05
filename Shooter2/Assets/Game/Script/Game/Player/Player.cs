@@ -73,6 +73,12 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void GetDamage(float amount)
+    {
+        float newHealth = armor + health - amount;
+
+    }
 }
 
 [System.Serializable]

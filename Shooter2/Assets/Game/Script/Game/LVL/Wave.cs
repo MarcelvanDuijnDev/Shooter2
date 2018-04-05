@@ -81,6 +81,7 @@ public class Wave : MonoBehaviour
                 if (waveClass[currentWave].timeNextWave <= 0 && currentWave <= waveClass.Length)
                 {
                     currentWave += 1;
+                    killsNeeded += totalEnemys[currentWave];
                     startWaves = true;
                 }
             }

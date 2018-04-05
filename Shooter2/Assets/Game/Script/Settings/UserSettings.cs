@@ -51,4 +51,5 @@ public class UserSettings : MonoBehaviour
 public class JsonSaveUserSettings
 {
     public float mouseSensivity;
+
 }
