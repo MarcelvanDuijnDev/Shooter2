@@ -11,7 +11,9 @@ public class CharacterController_Script : MonoBehaviour {
     private Vector3 moveDirection = Vector3.zero;
     //Look around
     public float cameraSensitivity;
-    [SerializeField]private Transform head;
+    [SerializeField]private Transform head,cameraObj;
+    [SerializeField]private Vector3 headPos_Fps, headPos_Third;
+    private bool headMode;
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
     private float speed;
@@ -51,6 +53,19 @@ public class CharacterController_Script : MonoBehaviour {
         else
         {
             speed = normalSpeed;
+        }
+        //camera mode
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            headMode = !headMode;
+        }
+        if (headMode)
+        {
+            cameraObj.localPosition = headPos_Fps;
+        }
+        else
+        {
+            cameraObj.localPosition = headPos_Third;
         }
     }
 }
