@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 0}
   health: 1
-  speed: 20
+  speed: 5
 --- !u!195 &195108787451199580
 NavMeshAgent:
   m_ObjectHideFlags: 1

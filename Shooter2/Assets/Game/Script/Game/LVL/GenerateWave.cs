@@ -75,7 +75,7 @@ public class GenerateWave : MonoBehaviour
             {
                 amount += waveScript.waveClass[i].spawnEnemys[o];
             }
-            Debug.Log(amount);
+            //Debug.Log(amount);
         }
     }
 	

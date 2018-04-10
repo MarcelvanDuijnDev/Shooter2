@@ -59,7 +59,7 @@ public class CharacterController_Script : MonoBehaviour {
         {
             headMode = !headMode;
         }
-        if (headMode)
+        if (!headMode)
         {
             cameraObj.localPosition = headPos_Fps;
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WeaponNew : MonoBehaviour 
 {
-
+    [SerializeField]private GameObject flashLight;
     [SerializeField]private int gunId;
     [SerializeField]private Text[] textUI;
     [SerializeField]private GameObject flash;
@@ -96,6 +96,18 @@ public class WeaponNew : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             gunId = 2;
+        }
+        //FlashLight
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (flashLight.activeSelf)
+            {
+                flashLight.SetActive(false);
+            }
+            else
+            {
+                flashLight.SetActive(true);
+            }
         }
         //Reload
         if(Input.GetKeyDown(KeyCode.R) && weaponsClass[gunId].currentAmmo != weaponsClass[gunId].magazineSize)
