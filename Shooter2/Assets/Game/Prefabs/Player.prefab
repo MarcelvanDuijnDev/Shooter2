@@ -571,13 +571,23 @@ MonoBehaviour:
   maxHealth: 100
   maxArmor: 100
   healthRegen: 1
-  pickupsTagScript: []
-  pickupsScript:
-  - pickupObject: {fileID: 0}
-    getAmount: 1000
-    health: 1
+  pickupsTagScript:
+  - tag: ArmorPickup
+    getAmount: 25
+    health: 0
     armor: 1
+    ammo: 0
+  - tag: HealthPickup
+    getAmount: 50
+    health: 1
+    armor: 0
+    ammo: 0
+  - tag: AmmoPickup
+    getAmount: 200
+    health: 0
+    armor: 0
     ammo: 1
+  pickupsScript: []
 --- !u!114 &114983537449017934
 MonoBehaviour:
   m_ObjectHideFlags: 1

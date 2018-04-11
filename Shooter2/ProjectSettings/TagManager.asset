@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerBullet
+  - HealthPickup
+  - ArmorPickup
+  - AmmoPickup
   layers:
   - Default
   - TransparentFX
