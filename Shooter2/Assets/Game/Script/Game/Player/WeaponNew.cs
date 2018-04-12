@@ -21,10 +21,10 @@ public class WeaponNew : MonoBehaviour
         flashAnim = flash.GetComponent<Animator>();
         for (int i = 0; i < weaponsClass.Length; i++)
         {
-            weaponsClass[gunId].objectPoolScript = (ObjectPool_Script)weaponsClass[gunId].objectPool.GetComponent(typeof(ObjectPool_Script));
-            weaponsClass[gunId].anim = weaponsClass[gunId].weapon.GetComponent<Animator>();
-            weaponsClass[gunId].reloadTimeReset = weaponsClass[gunId].reloadTime;
-            weaponsClass[gunId].shootSpeedReset = weaponsClass[gunId].shootSpeed;
+            weaponsClass[i].objectPoolScript = (ObjectPool_Script)weaponsClass[i].objectPool.GetComponent(typeof(ObjectPool_Script));
+            weaponsClass[i].anim = weaponsClass[i].weapon.GetComponent<Animator>();
+            weaponsClass[i].reloadTimeReset = weaponsClass[i].reloadTime;
+            weaponsClass[i].shootSpeedReset = weaponsClass[i].shootSpeed;
         }
     }
 
@@ -33,7 +33,7 @@ public class WeaponNew : MonoBehaviour
         //Single Shot
         if (Input.GetMouseButtonDown(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 0)
         {
-            Fire(gunId);
+            Fire();
             weaponsClass[gunId].anim.SetTrigger("M4");
             flashAnim.SetTrigger("Flash");
             flash.transform.localPosition = weaponsClass[gunId].shootPoint.transform.localPosition + weaponsClass[gunId].weapon.transform.localPosition;
@@ -62,7 +62,7 @@ public class WeaponNew : MonoBehaviour
             weaponsClass[gunId].shootSpeed -= 1 * Time.deltaTime;
             if (weaponsClass[gunId].shootSpeed <= 0)
             {
-                Fire(gunId);
+                Fire();
                 weaponsClass[gunId].anim.SetTrigger("M4");
                 flashAnim.SetTrigger("Flash");
                 flash.transform.localPosition = weaponsClass[gunId].shootPoint.transform.localPosition + weaponsClass[gunId].weapon.transform.localPosition;
@@ -138,21 +138,22 @@ public class WeaponNew : MonoBehaviour
             else if(weaponsClass[gunId].shootType == 2)
             { weaponsClass[gunId].shootType = 0;}
         }
+        //Set weapon true/false
+        for (int i = 0; i < weaponsClass.Length; i++)
+        {
+            if (weaponsClass[i].weapon.activeSelf && i != gunId)
+            {
+                weaponsClass[i].weapon.SetActive(false);
+            }
+            if (!weaponsClass[i].weapon.activeSelf && i == gunId)
+            {
+                weaponsClass[i].weapon.SetActive(true);
+            }
+        }
     }
 
     void FixedUpdate()
     {
-        for (int i = 0; i < weaponsClass.Length; i++)
-        {
-            if (weaponsClass[gunId].weapon.activeSelf && i != gunId)
-            {
-                weaponsClass[gunId].weapon.SetActive(false);
-            }
-            if (!weaponsClass[gunId].weapon.activeSelf && i == gunId)
-            {
-                weaponsClass[gunId].weapon.SetActive(true);
-            }
-        }
         SetUI();
     }
 
@@ -185,7 +186,7 @@ public class WeaponNew : MonoBehaviour
             Debug.Log("o");
             if (weaponsClass[gunId].shootSpeed <= 0 && weaponsClass[gunId].currentAmmo >= 0)
             {
-                Fire(gunId);
+                Fire();
                 weaponsClass[gunId].anim.SetTrigger("M4");
                 flashAnim.SetTrigger("Flash");
                 flash.transform.localPosition = weaponsClass[gunId].shootPoint.transform.localPosition + weaponsClass[gunId].weapon.transform.localPosition;
@@ -196,18 +197,30 @@ public class WeaponNew : MonoBehaviour
         }
     }
 
-    void Fire(int gunID)
+    void Fire()
     {
-        for (int i = 0; i < weaponsClass[gunId].objectPoolScript.objects.Count; i++)
+        for (int i = 0; i < weaponsClass[gunId].objectPoolScript.objects.Count ; i++)
         {
             if (!weaponsClass[gunId].objectPoolScript.objects[i].activeInHierarchy)
             {
+                ParticleShoot();
                 weaponsClass[gunId].objectPoolScript.objects[i].transform.position = weaponsClass[gunId].shootPoint.transform.position;
                 weaponsClass[gunId].objectPoolScript.objects[i].transform.rotation = weaponsClass[gunId].shootPoint.transform.rotation;
                 weaponsClass[gunId].objectPoolScript.objects[i].SetActive(true);
                 weaponsClass[gunId].objectPoolScript.objects[i].GetComponent<Rigidbody>().velocity = weaponsClass[gunId].objectPoolScript.objects[i].transform.forward * weaponsClass[gunId].bulletSpeed;
                 break;
             }
+        }
+    }
+
+    void ParticleShoot()
+    {
+        if(weaponsClass[gunId].shootEffects.Length >= 1)
+        {
+            int randomEffect = Random.Range(0,weaponsClass[gunId].shootEffects.Length);
+            GameObject obj = (GameObject)Instantiate(weaponsClass[gunId].shootEffects[randomEffect]);
+            obj.transform.position = weaponsClass[gunId].shootPoint.transform.position;
+            obj.transform.rotation = weaponsClass[gunId].shootPoint.transform.rotation;
         }
     }
 
@@ -242,6 +255,7 @@ public struct Weapons
     public int ammo, magazineSize, burstAmount;
     public bool automatic, burst;
     public int shootType;
+    public GameObject[] shootEffects;
 
     [HideInInspector]public Animator anim;
     [HideInInspector]public ObjectPool_Script objectPoolScript;
