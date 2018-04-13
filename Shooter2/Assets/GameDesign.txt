@@ -78,7 +78,10 @@ gunid 4 = GrenadeLaucher
 
 (501 t/m 600 Side barrel)
 501 = ecm jammer
-
+502 = radar
+503 = compas
+504 = musicbox
+505 = 
 
 (601 t/m 700 )
 601 = 
