@@ -665,6 +665,50 @@ Transform:
   m_Father: {fileID: 2069839994}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &194592388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 194592389}
+  - component: {fileID: 194592390}
+  m_Layer: 0
+  m_Name: GrenadeLauncher_Bullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &194592389
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 194592388}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4146208, y: 0.4884771, z: -0.034446716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1973145058}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194592390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 194592388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8915016317c10c499a5f7ad63ffe64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabGameObject: {fileID: 1926169751431954, guid: de87c5e04b497cc4da4ac01d42c63de4,
+    type: 2}
+  pooledAmount: 200
+  objects: []
 --- !u!1 &255270075
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +820,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1887102025}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &280590685
 MonoBehaviour:
@@ -1481,7 +1525,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1887102025}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &770393838
 MonoBehaviour:
@@ -1937,6 +1981,50 @@ Transform:
   m_Father: {fileID: 2069839994}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1192061249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1192061250}
+  - component: {fileID: 1192061251}
+  m_Layer: 0
+  m_Name: SniperRifle_Bullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1192061250
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192061249}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4146208, y: 0.4884771, z: -0.034446716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1973145058}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1192061251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192061249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8915016317c10c499a5f7ad63ffe64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabGameObject: {fileID: 1518872913549898, guid: 6eb5228aaa105684aa5dfa0236bf5fb8,
+    type: 2}
+  pooledAmount: 200
+  objects: []
 --- !u!1 &1278202921
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,7 +2492,7 @@ GameObject:
   - component: {fileID: 1543391255}
   - component: {fileID: 1543391254}
   m_Layer: 0
-  m_Name: ObjPool_Bullets
+  m_Name: Pistol_Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2435,7 +2523,7 @@ Transform:
   m_LocalPosition: {x: 0.4146208, y: 0.4884771, z: -0.034446716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1887102025}
+  m_Father: {fileID: 1973145058}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1561768368
@@ -2824,11 +2912,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114414745551062574, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
-        type: 2}
-      propertyPath: menu
-      value: 
-      objectReference: {fileID: 394578434}
     - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
         type: 2}
       propertyPath: textUI.Array.data[0]
@@ -2864,6 +2947,51 @@ Prefab:
       propertyPath: weaponsClass.Array.data[2].objectPool
       value: 
       objectReference: {fileID: 2040797236}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[3].objectPool
+      value: 
+      objectReference: {fileID: 1192061249}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[4].objectPool
+      value: 
+      objectReference: {fileID: 194592388}
+    - target: {fileID: 114414745551062574, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 394578434}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[0].att_2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[0].fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[1].fireRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[2].fireRate
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[3].fireRate
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[4].fireRate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a, type: 2}
   m_IsPrefabParent: 0
@@ -3180,11 +3308,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1543391255}
-  - {fileID: 2137131959}
-  - {fileID: 2040797238}
   - {fileID: 280590684}
   - {fileID: 770393837}
+  - {fileID: 1973145058}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3448,6 +3574,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1973145057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1973145058}
+  m_Layer: 0
+  m_Name: Bullet_Pools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1973145058
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1973145057}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1543391255}
+  - {fileID: 2137131959}
+  - {fileID: 2040797238}
+  - {fileID: 1192061250}
+  - {fileID: 194592389}
+  m_Father: {fileID: 1887102025}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2040797236
 GameObject:
   m_ObjectHideFlags: 0
@@ -3458,7 +3617,7 @@ GameObject:
   - component: {fileID: 2040797238}
   - component: {fileID: 2040797237}
   m_Layer: 0
-  m_Name: ObjPool_Bullets (2)
+  m_Name: ShotGun_Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3475,7 +3634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8915016317c10c499a5f7ad63ffe64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabGameObject: {fileID: 1518872913549898, guid: 6eb5228aaa105684aa5dfa0236bf5fb8,
+  prefabGameObject: {fileID: 1892718325933068, guid: e4647e249ac139e46b0e3df99f35307e,
     type: 2}
   pooledAmount: 200
   objects: []
@@ -3489,7 +3648,7 @@ Transform:
   m_LocalPosition: {x: 0.4146208, y: 0.4884771, z: -0.034446716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1887102025}
+  m_Father: {fileID: 1973145058}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069839993
@@ -3539,7 +3698,7 @@ GameObject:
   - component: {fileID: 2137131959}
   - component: {fileID: 2137131960}
   m_Layer: 0
-  m_Name: ObjPool_Bullets (1)
+  m_Name: AssaultRifle_Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3555,7 +3714,7 @@ Transform:
   m_LocalPosition: {x: 0.4146208, y: 0.4884771, z: -0.034446716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1887102025}
+  m_Father: {fileID: 1973145058}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2137131960

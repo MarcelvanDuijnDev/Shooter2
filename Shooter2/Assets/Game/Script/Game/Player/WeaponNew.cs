@@ -6,15 +6,13 @@ using UnityEngine;
 public class WeaponNew : MonoBehaviour 
 {
     [SerializeField]private GameObject flashLight;
-    [SerializeField]private int gunId;
-    [SerializeField]private Text[] textUI;
     [SerializeField]private GameObject flash;
     [SerializeField]private Animator flashAnim;
-
-    [Header("Weapons")]
-    public Weapons[] weaponsClass;
+    [SerializeField]private Text[] textUI;
+    [Header("Weapons")]public Weapons[] weaponsClass;
 
     [HideInInspector]public int kills;
+    private int gunId;
 
     void Start () 
     {
@@ -24,12 +22,13 @@ public class WeaponNew : MonoBehaviour
             weaponsClass[i].objectPoolScript = (ObjectPool_Script)weaponsClass[i].objectPool.GetComponent(typeof(ObjectPool_Script));
             weaponsClass[i].anim = weaponsClass[i].weapon.GetComponent<Animator>();
             weaponsClass[i].reloadTimeReset = weaponsClass[i].reloadTime;
-            weaponsClass[i].shootSpeedReset = weaponsClass[i].shootSpeed;
+            weaponsClass[i].shootSpeedReset = weaponsClass[i].fireRate;
         }
     }
 
     void Update()
     {
+        #region Shoot_Type :  Single Shot
         //Single Shot
         if (Input.GetMouseButtonDown(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 0)
         {
@@ -44,6 +43,8 @@ public class WeaponNew : MonoBehaviour
                 weaponsClass[gunId].reloadTime = weaponsClass[gunId].reloadTimeReset;
             }
         }
+        #endregion
+        #region Shoot_Type :  Burst
         //Burst
         if (Input.GetMouseButtonDown(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 1)
         {
@@ -52,15 +53,15 @@ public class WeaponNew : MonoBehaviour
             {
                 weaponsClass[gunId].reloading = false;
                 weaponsClass[gunId].reloadTime = weaponsClass[gunId].reloadTimeReset;
-
             }
         }
-
-        //Auto
+        #endregion
+        #region Shoot_Type :  Automatic
+        //Automatic
         if (Input.GetMouseButton(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 2)
         {
-            weaponsClass[gunId].shootSpeed -= 1 * Time.deltaTime;
-            if (weaponsClass[gunId].shootSpeed <= 0)
+            weaponsClass[gunId].fireRate -= 1 * Time.deltaTime;
+            if (weaponsClass[gunId].fireRate <= 0)
             {
                 Fire();
                 weaponsClass[gunId].anim.SetTrigger("M4");
@@ -72,9 +73,11 @@ public class WeaponNew : MonoBehaviour
                     weaponsClass[gunId].reloading = false;
                     weaponsClass[gunId].reloadTime = weaponsClass[gunId].reloadTimeReset;
                 }
-                weaponsClass[gunId].shootSpeed = weaponsClass[gunId].shootSpeedReset;
+                weaponsClass[gunId].fireRate = weaponsClass[gunId].shootSpeedReset;
             }
         }
+        #endregion
+        #region Aim / WeaponInput / FlashLight
         //Aim
         if (Input.GetMouseButton(1) && gunId <= weaponsClass.Length)
         {
@@ -85,18 +88,12 @@ public class WeaponNew : MonoBehaviour
             weaponsClass[gunId].weapon.transform.localPosition = new Vector3(weaponsClass[gunId].normalPos.x, weaponsClass[gunId].normalPos.y, weaponsClass[gunId].normalPos.z);
         }
         //Get WeaponInput
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            gunId = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gunId = 1;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            gunId = 2;
-        }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { gunId = 0; }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { gunId = 1; }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) { gunId = 2; }
+        if (Input.GetKeyDown(KeyCode.Alpha4)) { gunId = 3; }
+        if (Input.GetKeyDown(KeyCode.Alpha5)) { gunId = 4; }
+
         //FlashLight
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -109,8 +106,10 @@ public class WeaponNew : MonoBehaviour
                 flashLight.SetActive(true);
             }
         }
-        //Reload
-        if(Input.GetKeyDown(KeyCode.R) && weaponsClass[gunId].currentAmmo != weaponsClass[gunId].magazineSize)
+        #endregion
+        #region Reloading / Set Weapon Type
+        //Reloading
+        if (Input.GetKeyDown(KeyCode.R) && weaponsClass[gunId].currentAmmo != weaponsClass[gunId].magazineSize)
         {
             weaponsClass[gunId].reloading = true;
         }
@@ -138,6 +137,8 @@ public class WeaponNew : MonoBehaviour
             else if(weaponsClass[gunId].shootType == 2)
             { weaponsClass[gunId].shootType = 0;}
         }
+        #endregion
+        #region Set weapon active
         //Set weapon true/false
         for (int i = 0; i < weaponsClass.Length; i++)
         {
@@ -150,6 +151,7 @@ public class WeaponNew : MonoBehaviour
                 weaponsClass[i].weapon.SetActive(true);
             }
         }
+        #endregion
     }
 
     void FixedUpdate()
@@ -180,11 +182,11 @@ public class WeaponNew : MonoBehaviour
     void BurstFire()
     {
         int burstAmountCalculate = weaponsClass[gunId].burstAmount;
-        weaponsClass[gunId].shootSpeed -= 1 * Time.deltaTime;
+        weaponsClass[gunId].fireRate -= 1 * Time.deltaTime;
         if (burstAmountCalculate <= weaponsClass[gunId].burstAmount)
         {
             Debug.Log("o");
-            if (weaponsClass[gunId].shootSpeed <= 0 && weaponsClass[gunId].currentAmmo >= 0)
+            if (weaponsClass[gunId].fireRate <= 0 && weaponsClass[gunId].currentAmmo >= 0)
             {
                 Fire();
                 weaponsClass[gunId].anim.SetTrigger("M4");
@@ -192,7 +194,7 @@ public class WeaponNew : MonoBehaviour
                 flash.transform.localPosition = weaponsClass[gunId].shootPoint.transform.localPosition + weaponsClass[gunId].weapon.transform.localPosition;
                 weaponsClass[gunId].currentAmmo -= 1;
                 burstAmountCalculate++;
-                weaponsClass[gunId].shootSpeed = weaponsClass[gunId].shootSpeedReset;
+                weaponsClass[gunId].fireRate = weaponsClass[gunId].shootSpeedReset;
             }
         }
     }
@@ -243,14 +245,43 @@ public class WeaponNew : MonoBehaviour
             weaponsClass[i].ammo += amount;
         }
     }
+
+    public void Manage_Upgrades(int gunID,bool add,int attachment)
+    {
+        #region Weapon :  Pistol
+        if (gunID == 0)
+        {
+            #region Attachments Add
+            if (add)
+            {
+                if (attachment == 1)
+                {
+                    weaponsClass[gunID].magazineSize += 5;
+                }
+            }
+            #endregion
+            #region Attachments Remove
+            else
+            {
+                if(attachment == 1)
+                {
+                    weaponsClass[gunID].magazineSize -= 5;
+                }
+            }
+            #endregion
+        }
+        #endregion
+    }
 }
 
 [System.Serializable]
 public struct Weapons
 {
+    [Header("Weapon")]
+    public string stuctName;
     public GameObject weapon, objectPool;
     public Transform shootPoint;
-    public float bulletSpeed, reloadTime, shootSpeed, burstShootSpeed;
+    public float bulletSpeed, reloadTime, fireRate, burstShootSpeed;
     public Vector3 normalPos, aimPos;
     public int ammo, magazineSize, burstAmount;
     public bool automatic, burst;
@@ -262,4 +293,7 @@ public struct Weapons
     [HideInInspector]public float reloadTimeReset,shootSpeedReset;
     [HideInInspector]public int currentAmmo;
     [HideInInspector]public bool reloading;
+    [Header("Attachments")]
+    public bool attchment_1;
+    public bool att_2, att_3, att_4;
 }

@@ -10,10 +10,8 @@ public class TestScene_SpawnEnemy : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collisio");
         if (other.gameObject.tag == "PlayerBullet")
         {
-            Debug.Log("Collision");
             other.gameObject.SetActive(false);
             GameObject obj = (GameObject)Instantiate(enemyPrefab);
             obj.transform.position = enemySpawn.transform.position;
