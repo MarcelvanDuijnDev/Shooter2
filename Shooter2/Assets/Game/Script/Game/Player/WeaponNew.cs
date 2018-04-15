@@ -30,7 +30,7 @@ public class WeaponNew : MonoBehaviour
     {
         #region Shoot_Type :  Single Shot
         //Single Shot
-        if (Input.GetMouseButtonDown(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 0)
+        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("R1Button") && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 0)
         {
             Fire();
             weaponsClass[gunId].anim.SetTrigger("M4");
@@ -46,7 +46,7 @@ public class WeaponNew : MonoBehaviour
         #endregion
         #region Shoot_Type :  Burst
         //Burst
-        if (Input.GetMouseButtonDown(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 1)
+        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("R1Button") && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 1)
         {
             BurstFire();
             if (weaponsClass[gunId].reloading)
@@ -58,7 +58,7 @@ public class WeaponNew : MonoBehaviour
         #endregion
         #region Shoot_Type :  Automatic
         //Automatic
-        if (Input.GetMouseButton(0) && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 2)
+        if (Input.GetMouseButton(0) || Input.GetButtonDown("R1Button") && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 2)
         {
             weaponsClass[gunId].fireRate -= 1 * Time.deltaTime;
             if (weaponsClass[gunId].fireRate <= 0)
@@ -79,12 +79,14 @@ public class WeaponNew : MonoBehaviour
         #endregion
         #region Aim / WeaponInput / FlashLight
         //Aim
-        if (Input.GetMouseButton(1) && gunId <= weaponsClass.Length)
+        if (Input.GetMouseButton(1) || Input.GetButton("L1Button") && gunId <= weaponsClass.Length)
         {
+            Debug.Log("L1");
             weaponsClass[gunId].weapon.transform.localPosition = new Vector3(weaponsClass[gunId].aimPos.x, weaponsClass[gunId].aimPos.y, weaponsClass[gunId].aimPos.z);
         }
-        if (Input.GetMouseButtonUp(1) && gunId <= weaponsClass.Length)
+        if (Input.GetMouseButtonUp(1) || Input.GetButtonUp("L1Button") && gunId <= weaponsClass.Length)
         {
+            Debug.Log("L1UP");
             weaponsClass[gunId].weapon.transform.localPosition = new Vector3(weaponsClass[gunId].normalPos.x, weaponsClass[gunId].normalPos.y, weaponsClass[gunId].normalPos.z);
         }
         //Get WeaponInput
@@ -109,7 +111,7 @@ public class WeaponNew : MonoBehaviour
         #endregion
         #region Reloading / Set Weapon Type
         //Reloading
-        if (Input.GetKeyDown(KeyCode.R) && weaponsClass[gunId].currentAmmo != weaponsClass[gunId].magazineSize)
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("XButton") && weaponsClass[gunId].currentAmmo != weaponsClass[gunId].magazineSize)
         {
             weaponsClass[gunId].reloading = true;
         }
