@@ -1588,9 +1588,9 @@ MonoBehaviour:
   blades: {fileID: 181578621}
   lookPoint: {fileID: 1421512305}
   cameraObj: {fileID: 1342951175}
-  directionX: -0.562
-  directionZ: 0
-  speed: 0
+  directionX: 0.45
+  directionZ: 0.457
+  speed: 1
 --- !u!4 &688218987
 Transform:
   m_ObjectHideFlags: 0
