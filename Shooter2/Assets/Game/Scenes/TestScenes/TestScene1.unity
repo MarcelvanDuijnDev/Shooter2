@@ -3027,6 +3027,11 @@ Prefab:
       propertyPath: weaponsClass.Array.data[4].objectPool
       value: 
       objectReference: {fileID: 194592388}
+    - target: {fileID: 114324584577645672, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: state_Active
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a, type: 2}
   m_IsPrefabParent: 0
