@@ -85,3 +85,91 @@ gunid 4 = GrenadeLaucher
 
 (601 t/m 700 )
 601 = 
+//=====================	Pistol
+[Weapons]
+gunid 0 = Pistol
+gunid 1 = AssaultRifle
+gunid 2 = ShotGun
+gunid 3 = SniperRifle
+gunid 4 = GrenadeLaucher
+
+[Attachments]
+(1 t/m 100 Magazines)
+1 = normal 
+2 = extended
+3 = extended+
+4 = extended++
+5 = bigger bullet
+6 = damage+
+7 = damage++
+8 = fire
+9 = explosive
+10 = toxic
+11 = needles
+12 = gass bullet
+
+(101 t/m 200 scopes)
+101 = none
+102 = iron sight(neon glow)
+103 = red dot
+104 = holographic
+105 = 2x
+106 = 4x
+107 = 6x
+108 = 8x
+109 = infrared 
+110 = infrared 2x
+111 = infrared 4x
+112 = infrared 6x
+113 = infrared 8x
+114 = flir
+115 = flir 2x
+116 = flir 4x
+117 = flir 6x
+118 = flir 8x
+119 = negative collor
+120 = pixel
+
+
+(201 t/m 300 Underbarrel)
+201 = lazer
+202 = grenade launcher
+203 = sleep dart
+204 = flashight
+205 = shotgun
+206 = knife
+207 = flamethrower
+208 = shield
+209 = grip
+210 = smokegrenade
+211 = flaregun
+212 = chainshaw
+213 = bypod
+214 = tazer
+215 = uv flashlight
+216 = grenade toxic
+217 = rockets
+218 = nailgun
+219 = crossbow
+220 = foregrip / bypod
+221 = grenade napalm
+
+
+
+(301 t/m 400 barrel)
+301 = surpressor
+302 = compensator
+303 = extended barrel
+
+(401 t/m 500 upperbarrel)
+401 = 
+
+(501 t/m 600 Side barrel)
+501 = ecm jammer
+502 = radar
+503 = compas
+504 = musicbox
+505 = 
+
+(601 t/m 700 )
+601 = 

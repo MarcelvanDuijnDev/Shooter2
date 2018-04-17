@@ -46,13 +46,13 @@ public class Ally : MonoBehaviour
         if (state_TurnOn)
         {
             if (blades_Rotation.y <= speed * 5000){blades_Rotation.y += 200 * Time.deltaTime;}
-            if (rotator_2_Rotation.x < directionX * 80 + 90)
-            {
-                rotator_2_Rotation.x += 8 * Time.deltaTime;
-            }
+            if (rotator_2_Rotation.x < directionX * 80 + 90){rotator_2_Rotation.x += 8 * Time.deltaTime;}
+            if (rotator_1_Rotation.x < directionX * 80) { rotator_1_Rotation.x += 5 * Time.deltaTime; }
+            if (rotator_1_Rotation.z < directionX * 80) { rotator_1_Rotation.z += 5 * Time.deltaTime; }
+            /*
             rotator_1_Rotation.x = directionX * 80;
             rotator_1_Rotation.z = directionZ * -80;
-
+            */
             rotator_1.transform.eulerAngles = rotator_1_Rotation;
             rotator_2.transform.eulerAngles = rotator_2_Rotation;
             blades.transform.Rotate(blades_Rotation * Time.deltaTime);

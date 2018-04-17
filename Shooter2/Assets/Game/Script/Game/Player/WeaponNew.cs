@@ -58,7 +58,7 @@ public class WeaponNew : MonoBehaviour
         #endregion
         #region Shoot_Type :  Automatic
         //Automatic
-        if (Input.GetMouseButton(0) || Input.GetButtonDown("R1Button") && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 2)
+        if (Input.GetMouseButton(0) || Input.GetButton("R1Button") && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 2)
         {
             weaponsClass[gunId].fireRate -= 1 * Time.deltaTime;
             if (weaponsClass[gunId].fireRate <= 0)

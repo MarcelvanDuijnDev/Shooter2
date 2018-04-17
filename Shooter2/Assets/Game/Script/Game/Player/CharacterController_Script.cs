@@ -63,6 +63,7 @@ public class CharacterController_Script : MonoBehaviour {
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
 
+
         //Sprint
         if(Input.GetKey(KeyCode.LeftShift))
         {

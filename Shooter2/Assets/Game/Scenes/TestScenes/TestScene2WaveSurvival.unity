@@ -1705,6 +1705,50 @@ Transform:
   m_Father: {fileID: 2069839994}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1124089299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1124089301}
+  - component: {fileID: 1124089300}
+  m_Layer: 0
+  m_Name: ObjPool_Bullets (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1124089300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1124089299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8915016317c10c499a5f7ad63ffe64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabGameObject: {fileID: 1926169751431954, guid: de87c5e04b497cc4da4ac01d42c63de4,
+    type: 2}
+  pooledAmount: 200
+  objects: []
+--- !u!4 &1124089301
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1124089299}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4146208, y: 0.4884771, z: -0.034446716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1887102025}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1188404944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,6 +1909,50 @@ Transform:
   m_Father: {fileID: 1331465564}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1322730661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1322730662}
+  - component: {fileID: 1322730663}
+  m_Layer: 0
+  m_Name: ObjPool_Bullets (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1322730662
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1322730661}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4146208, y: 0.4884771, z: -0.034446716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1887102025}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1322730663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1322730661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8915016317c10c499a5f7ad63ffe64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabGameObject: {fileID: 1518872913549898, guid: 6eb5228aaa105684aa5dfa0236bf5fb8,
+    type: 2}
+  pooledAmount: 200
+  objects: []
 --- !u!1 &1331465563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,6 +2457,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[3].objectPool
+      value: 
+      objectReference: {fileID: 1322730661}
+    - target: {fileID: 114983537449017934, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: weaponsClass.Array.data[4].objectPool
+      value: 
+      objectReference: {fileID: 1124089299}
+    - target: {fileID: 23719519190968078, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fd05e9a57cdf2e419ab24b0e3f2b25a, type: 2}
   m_IsPrefabParent: 0
@@ -2402,6 +2505,8 @@ Transform:
   - {fileID: 1543391255}
   - {fileID: 1945842987}
   - {fileID: 1900696219}
+  - {fileID: 1322730662}
+  - {fileID: 1124089301}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
