@@ -35,6 +35,36 @@ public class TestScene_ControllerInput : MonoBehaviour
         {Debug.Log("R2"); objects[9].SetActive(true);}else
         {objects[9].SetActive(false);}
 
+        if (Input.GetButton("DPadUp"))
+        { Debug.Log("DPadUp"); objects[10].SetActive(true); }else
+        { objects[10].SetActive(false); }
+        if (Input.GetButton("DPadDown"))
+        { Debug.Log("DPadDown"); objects[11].SetActive(true); }else
+        { objects[11].SetActive(false); }
+        if (Input.GetButton("DPadLeft"))
+        { Debug.Log("DPadLeft"); objects[12].SetActive(true); }else
+        { objects[12].SetActive(false); }
+        if (Input.GetButton("DPadRight"))
+        { Debug.Log("DPadRight"); objects[13].SetActive(true); }else
+        { objects[13].SetActive(false); }
+
+        if (Input.GetButton("Select"))
+        { Debug.Log("Select"); objects[14].SetActive(true); }else
+        { objects[14].SetActive(false); }
+        if (Input.GetButton("Start"))
+        { Debug.Log("Start"); objects[15].SetActive(true); }else
+        { objects[15].SetActive(false); }
+
+        if (Input.GetButton("XboxButton"))
+        { Debug.Log("XboxButton"); objects[16].SetActive(true); }else
+        { objects[16].SetActive(false); }
+
+        if (Input.GetButton("JoyStickClickLeft"))
+        { Debug.Log("JoyStickClickLeft");}
+        if (Input.GetButton("JoyStickClickRight"))
+        { Debug.Log("JoyStickClickRight"); }
+
+
 
         pos1.x = Input.GetAxis("LeftJoystickHorizontal");
         pos1.z = -Input.GetAxis("LeftJoystickVertical");
@@ -42,7 +72,7 @@ public class TestScene_ControllerInput : MonoBehaviour
         pos2.x = Input.GetAxis("RightJoystickHorizontal");
         pos2.z = -Input.GetAxis("RightJoystickVertical");
 
-        objects[4].transform.position += pos1;
-        objects[5].transform.position += pos2;
+        objects[4].transform.position += pos1 / 5;
+        objects[5].transform.position += pos2 / 5;
 	}
 }

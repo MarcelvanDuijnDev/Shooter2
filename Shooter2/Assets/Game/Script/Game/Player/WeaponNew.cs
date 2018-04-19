@@ -95,6 +95,10 @@ public class WeaponNew : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) { gunId = 2; }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { gunId = 3; }
         if (Input.GetKeyDown(KeyCode.Alpha5)) { gunId = 4; }
+        if (Input.GetButtonDown("DPadLeft"))  { gunId -= 1; }
+        if (Input.GetButtonDown("DPadRight")) { gunId += 1; }
+        if (gunId > 5) { gunId = 0; }
+        if (gunId < 0) { gunId = 5; }
 
         //FlashLight
         if (Input.GetKeyDown(KeyCode.F))
@@ -126,7 +130,7 @@ public class WeaponNew : MonoBehaviour
         }
 
         //Set weapon type
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("JoyStickClickRight"))
         {
             if(weaponsClass[gunId].shootType == 0 && weaponsClass[gunId].burst)
             {weaponsClass[gunId].shootType = 1;}

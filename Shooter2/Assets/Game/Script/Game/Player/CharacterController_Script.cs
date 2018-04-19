@@ -26,11 +26,11 @@ public class CharacterController_Script : MonoBehaviour {
 
     void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) || Input.GetButtonDown("Select"))
         {
             camera_Perspective = !camera_Perspective;
         }
-        if (camera_Perspective)
+        if (!camera_Perspective)
         {
             fps_camera.SetActive(true);
             thirdperson_Camera.SetActive(false);
@@ -57,7 +57,7 @@ public class CharacterController_Script : MonoBehaviour {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump") || Input.GetButton("AButton"))
                 moveDirection.y = jumpSpeed;
         }
         moveDirection.y -= gravity * Time.deltaTime;
