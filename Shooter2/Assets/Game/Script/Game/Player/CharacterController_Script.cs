@@ -18,6 +18,7 @@ public class CharacterController_Script : MonoBehaviour {
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
     private float speed;
+    private float dpadHorizontal, dpadVertical;
 
     void Start()
     {
@@ -26,10 +27,22 @@ public class CharacterController_Script : MonoBehaviour {
 
     void Update() 
     {
+        dpadHorizontal = Input.GetAxis("DPadHorizontal");
+        dpadVertical = Input.GetAxis("DPadVertical");
         if (Input.GetKeyDown(KeyCode.B) || Input.GetButtonDown("Select"))
         {
             camera_Perspective = !camera_Perspective;
         }
+        if(dpadVertical == 1)
+        {
+            camera_Perspective = false;
+        }
+        if(dpadVertical == -1)
+        {
+            camera_Perspective = true;
+        }
+
+
         if (!camera_Perspective)
         {
             fps_camera.SetActive(true);

@@ -13,6 +13,7 @@ public class WeaponNew : MonoBehaviour
 
     [HideInInspector]public int kills;
     private int gunId;
+    private float dpadHorizontal, dpadVertical;
 
     void Start () 
     {
@@ -28,6 +29,10 @@ public class WeaponNew : MonoBehaviour
 
     void Update()
     {
+        dpadHorizontal = Input.GetAxis("DPadHorizontal");
+        dpadVertical = Input.GetAxis("DPadVertical");
+
+
         #region Shoot_Type :  Single Shot
         //Single Shot
         if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("R1Button") && gunId <= weaponsClass.Length && weaponsClass[gunId].currentAmmo > 0 && weaponsClass[gunId].shootType == 0)
@@ -95,8 +100,8 @@ public class WeaponNew : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) { gunId = 2; }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { gunId = 3; }
         if (Input.GetKeyDown(KeyCode.Alpha5)) { gunId = 4; }
-        if (Input.GetButtonDown("DPadLeft"))  { gunId -= 1; }
-        if (Input.GetButtonDown("DPadRight")) { gunId += 1; }
+        if (dpadHorizontal == -1 && gunId !=0)  { gunId -= 1; }
+        if (dpadHorizontal == 1 && gunId != 4) { gunId += 1; }
         if (gunId > 5) { gunId = 0; }
         if (gunId < 0) { gunId = 5; }
 

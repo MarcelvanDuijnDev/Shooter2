@@ -7,9 +7,14 @@ public class TestScene_ControllerInput : MonoBehaviour
     public GameObject[] objects;
     public Vector3 pos1;
     public Vector3 pos2;
+    float l2, r2, dpadvertical, dpadhorizontal;
    
 	void Update () 
     {
+        l2 = Input.GetAxis("L2Button");
+        r2 = Input.GetAxis("R2Button");
+        dpadvertical = Input.GetAxis("DPadVertical");
+        dpadhorizontal = Input.GetAxis("DPadHorizontal");
         if (Input.GetButton("AButton"))
         {objects[0].SetActive(true);}else
         {objects[0].SetActive(false);}
@@ -25,26 +30,26 @@ public class TestScene_ControllerInput : MonoBehaviour
         if (Input.GetButton("L1Button"))
         {Debug.Log("L1"); objects[6].SetActive(true);}else
         {objects[6].SetActive(false);}
-        if (Input.GetButton("L2Button"))
+        if (l2 == 1)
         {Debug.Log("L2"); objects[7].SetActive(true);}else
         {objects[7].SetActive(false);}
         if (Input.GetButton("R1Button"))
         {Debug.Log("R1"); objects[8].SetActive(true);}else
         {objects[8].SetActive(false);}
-        if (Input.GetButton("R2Button"))
+        if (r2 == 1)
         {Debug.Log("R2"); objects[9].SetActive(true);}else
         {objects[9].SetActive(false);}
 
-        if (Input.GetButton("DPadUp"))
+        if (dpadvertical == 1)
         { Debug.Log("DPadUp"); objects[10].SetActive(true); }else
         { objects[10].SetActive(false); }
-        if (Input.GetButton("DPadDown"))
+        if (dpadvertical == -1)
         { Debug.Log("DPadDown"); objects[11].SetActive(true); }else
         { objects[11].SetActive(false); }
-        if (Input.GetButton("DPadLeft"))
+        if (dpadhorizontal == -1)
         { Debug.Log("DPadLeft"); objects[12].SetActive(true); }else
         { objects[12].SetActive(false); }
-        if (Input.GetButton("DPadRight"))
+        if (dpadhorizontal == 1)
         { Debug.Log("DPadRight"); objects[13].SetActive(true); }else
         { objects[13].SetActive(false); }
 
@@ -63,8 +68,6 @@ public class TestScene_ControllerInput : MonoBehaviour
         { Debug.Log("JoyStickClickLeft");}
         if (Input.GetButton("JoyStickClickRight"))
         { Debug.Log("JoyStickClickRight"); }
-
-
 
         pos1.x = Input.GetAxis("LeftJoystickHorizontal");
         pos1.z = -Input.GetAxis("LeftJoystickVertical");
