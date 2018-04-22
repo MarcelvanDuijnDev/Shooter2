@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/TestScenes/TestScene2WaveSurvival.unity
     guid: a079a70753e1e4849af53b4d548f3581
+  - enabled: 1
+    path: Assets/Game/Scenes/TestScenes/TestScene2_OutsideWorld.unity
+    guid: adf1d894dce3427479be0e6062640a06
